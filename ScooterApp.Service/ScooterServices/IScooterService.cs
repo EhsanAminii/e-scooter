@@ -8,6 +8,6 @@ namespace ScooterApp.Service.ScooterServices
     {
         Task<List<ScooterDocument>> FindScootersInRange(double longitude, double latitude, int radius);
 
-        Task UpdateScooter(ScooterDocument scooter);
+        Task UpdateScooter(ScooterDocument scooterDocument);
     }
 }

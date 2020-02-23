@@ -12,7 +12,7 @@ namespace ScooterSimulator
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Generating scooters");
             var serviceBusConnectionString = "Endpoint=sb://scootersb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=OHKNCTFtoynmxU3yzKws0nVQuZ9is7Jqb+AA/tjGv8s=";
             var topic = "scooterupdated";
             var scooterDocumentType = "Scooter";
@@ -23,7 +23,6 @@ namespace ScooterSimulator
             var scooter = new Faker<ScooterDocument>()
                 .StrictMode(true)
                 .RuleFor(x => x.Id, scooterId)
-                .RuleFor(x => x.PartitionKey, s => scooterId)
                 .RuleFor(x => x.Location, l => new Point(l.Address.Longitude(), l.Address.Latitude()))
                 .RuleFor(x => x.Code, c => c.Random.AlphaNumeric(6))
                 .RuleFor(x => x.AcceptRide, true)

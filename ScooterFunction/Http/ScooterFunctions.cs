@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using ScooterApp.Domain;
 using ScooterApp.Service.ScooterServices;
 
-namespace ScooterFunction
+namespace ScooterFunction.Http
 {
     public class ScooterFunctions
     {

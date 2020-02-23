@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rider_Service", "Rider_Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trip_Service", "Trip_Service", "{27545659-FC78-4C2A-81FB-9686A737D4D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScooterApp.Extensions", "ScooterApp.Extensions\ScooterApp.Extensions.csproj", "{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{0466EB37-30A9-4FFF-9C7F-4432015216BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0466EB37-30A9-4FFF-9C7F-4432015216BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0466EB37-30A9-4FFF-9C7F-4432015216BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{5EFA7173-81ED-4C0B-88C8-664BC411D818} = {8956D195-9B43-4019-A1F7-F3CCEACEE5F6}
 		{25DDF78B-1213-4912-9746-200F06FA72E7} = {0D27A91E-BC33-415B-831A-C7BCFE8E28E4}
 		{0466EB37-30A9-4FFF-9C7F-4432015216BB} = {0D27A91E-BC33-415B-831A-C7BCFE8E28E4}
+		{13EF4E05-B8FD-45FC-BDC9-D4D42E3BA267} = {69AC0E42-E53A-468A-8C9C-F38EE1AFE763}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73EE3089-CF97-4CFD-B440-5C4C2E7610C6}

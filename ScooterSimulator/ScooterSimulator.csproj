@@ -14,4 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ScooterApp.Domain\ScooterApp.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SeedData\" />
+  </ItemGroup>
 </Project>
