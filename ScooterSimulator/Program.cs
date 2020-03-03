@@ -20,10 +20,11 @@ namespace ScooterSimulator
             var client = new TopicClient(serviceBusConnectionString, topic);
 
             var scooterId = Guid.NewGuid().ToString();
+
             var scooter = new Faker<ScooterDocument>()
                 .StrictMode(true)
                 .RuleFor(x => x.Id, scooterId)
-                .RuleFor(x => x.Location, l => new Point(l.Address.Longitude(), l.Address.Latitude()))
+                .RuleFor(x => x.Location, l => new Point(l.Random.Double(10.992165, 11.150780), l.Random.Double(49.385055, 49.473032)))
                 .RuleFor(x => x.Code, c => c.Random.AlphaNumeric(6))
                 .RuleFor(x => x.AcceptRide, true)
                 .RuleFor(x => x.Identity, scooterId)

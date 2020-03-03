@@ -9,7 +9,7 @@ using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ScooterApp.Domain;
+using ScooterApp.Domain.Trip;
 
 namespace RiderOrchestratorFunction
 {
@@ -19,12 +19,12 @@ namespace RiderOrchestratorFunction
         public static async Task<object> StartTripManager(
             [OrchestrationTrigger] IDurableOrchestrationContext context)
         {
-            Trip trip = context.GetInput<Trip>();
+            TripDocument tripDocument = context.GetInput<TripDocument>();
 
             string tripAcceptCode;
 
             // Replace "hello" with the name of your Durable Activity Function.
-            trip = await context.CallActivityAsync<Trip>("CallForUnlockAndStart", trip);
+            tripDocument = await context.CallActivityAsync<TripDocument>("CallForUnlockAndStart", tripDocument);
 
             using (var cts = new CancellationTokenSource())
             {
@@ -46,18 +46,18 @@ namespace RiderOrchestratorFunction
 
             return new
             {
-                Trip = trip,
+                Trip = tripDocument,
                 Code = tripAcceptCode
             };
         }
 
         [FunctionName("CallForUnlockAndStart")]
-        public static Trip CallForUnlockAndStart([ActivityTrigger] Trip trip,
+        public static TripDocument CallForUnlockAndStart([ActivityTrigger] TripDocument tripDocument,
             ILogger log)
         {
-            log.LogInformation($"The trip with code {trip.ScooterCode} is waiting for unlock");
+            log.LogInformation($"The tripDocument with code {tripDocument.ScooterCode} is waiting for unlock");
 
-            return trip;
+            return tripDocument;
         }
 
         [FunctionName("TripOrchestrator")]
@@ -68,8 +68,8 @@ namespace RiderOrchestratorFunction
         {
             // Function input comes from the request content.
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            Trip trip = JsonConvert.DeserializeObject<Trip>(requestBody);
-            var instanceId = trip.ScooterCode;
+            TripDocument tripDocument = JsonConvert.DeserializeObject<TripDocument>(requestBody);
+            var instanceId = tripDocument.ScooterCode;
 
             try
             {
@@ -81,7 +81,7 @@ namespace RiderOrchestratorFunction
                     tripStatus.RuntimeStatus != OrchestrationRuntimeStatus.Running ||
                     tripStatus.RuntimeStatus != OrchestrationRuntimeStatus.Pending)
                 {
-                    await starter.StartNewAsync("StartTripManager", instanceId, trip);
+                    await starter.StartNewAsync("StartTripManager", instanceId, tripDocument);
                     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
                 }
             }
